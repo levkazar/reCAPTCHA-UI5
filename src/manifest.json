@@ -1,0 +1,37 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.1.0",
+    "id": "demo",
+    "type": "application",
+    "i18n": "resources/i18n/texts.properties",
+    "title": "Demo",
+    "description": "Demo",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "ach": "CA-UI5-DOC"
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "fullWidth": false,
+    "supportedThemes": ["sap_belize_plus", "sap_belize", "sap_bluecrystal"]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "dependencies": {
+      "minUI5Version": "1.44",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "models": {
+    }
+  }
+}
