@@ -25,25 +25,12 @@ sap.ui.define(
     });
 
     function success(event) {
-      fetch("/sap/opu/odata/verify", {
-        method: "post",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify({
-          token: event.getParameter("token")
-        })
-      })
-        .then(response => {
-          response.json().then(body => {
-            if (body.success) {
-              alert(`Exzellente Glückwünsche!`);
-            } else {
-              alert(`Epic Fail!`);
-            }
-          });
-        })
-        .catch(error => alert(`Oh Nein! ${error}`));
+      let token = event.getParameter("token");
+      if (token) {
+        alert(`Congrats! Your token key is\n${token}`);
+      } else {
+        alert(`Failed! No token was generated`);
+      }
 
       firstButton.setEnabled(false);
       resetButon.setEnabled(true);
@@ -51,7 +38,7 @@ sap.ui.define(
 
     function basic() {
       recaptcha = new BasicRecaptcha({
-        sitekey: "6Le0p7EUAAAAAFHo5hMcK-8GEukxZcaBq7RBlsZl",
+        sitekey: "your public sitekey goes here",
         loadError: () => alert("Load Error!"),
         success: success,
         error: () => alert("Error!"),
@@ -61,7 +48,7 @@ sap.ui.define(
 
     function normal() {
       recaptcha = new Recaptcha({
-        sitekey: "6Le0p7EUAAAAAFHo5hMcK-8GEukxZcaBq7RBlsZl",
+        sitekey: "your public sitekey goes here",
         theme: "light",
         compact: false,
         loadError: () => alert("Load Error!"),
@@ -73,7 +60,7 @@ sap.ui.define(
 
     function invisible() {
       recaptcha = new InvisibleRecaptcha({
-        sitekey: "6Ld_X7IUAAAAALQQyU3JR3T5fHSdgtVbTPX1XMat",
+        sitekey: "your public sitekey goes here",
         badge: "bottomright",
         loadError: () => alert("Load Error!"),
         success: success,
@@ -97,7 +84,7 @@ sap.ui.define(
       },
 
       createContent: function() {
-        normal();
+        invisible();
 
         const page = new sap.m.Page("page", {
           title: "Recaptcha Test",
